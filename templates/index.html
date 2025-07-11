@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome – Audio→Image{% endblock %}
+{% block content %}
+  <div >
+    <h1>Welcome to Audio→Image</h1>
+    {% if session.get("username") %}
+      <p><a href="{{ url_for('gallery') }}"><button>🎨 View Gallery</button></a></p>
+    {% else %}
+   <p>
+        <a href="{{ url_for('signup') }}"><button>Sign Up</button></a>
+        <a href="{{ url_for('login') }}"><button class="secondary">Login</button></a>
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}

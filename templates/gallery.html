@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Your Gallery{% endblock %}
+{% block content %}
+
+<div>
+    <h2>Your Image Gallery</h2>
+
+    <form method="post" action="{{url_for("generate")}}">
+        <button>Generate From Audio</button>
+    </form>
+</div>
+
+{% if images %}
+<div class="gallery-grid">
+    {% for img in images %}
+    <div class="card">
+        <img src="{{url_for("serve_image",filename=img["filename"])}}" alt="Generated Image">
+        <div class="card-body">
+            <p>Generated at: {{img["timestamp"] | datetimeformat }}</p>
+            <a href="{{url_for("serve_image",filename=img["filename"])}}" download>
+                <button class="secondary">Download</button>
+            </a>
+            <form action="{{url_for("delete_image")}}" method="post">
+                <input type="hidden" name="filename" value="{{img["filename"]}}">
+                <button class="danger" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>You have not generated Images yet.</p>
+{% endif %}
+
+{% endblock %}
