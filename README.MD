@@ -24,10 +24,6 @@ This project is a web application designed to generate images based on audio inp
     ```bash
     cd yourproject
     ```
-3. Install dependencies:
-    ```bash
-    [insert installation command, e.g., pip install -r requirements.txt or npm install]
-    ```
 
 ## Usage
 
